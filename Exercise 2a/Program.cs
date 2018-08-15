@@ -10,9 +10,16 @@ namespace Exercise_2a
     {
         static void Main(string[] args)
         {
-            Add(); //Made this mess into a method. Its not good but I'm learning at least.
+             Console.WriteLine("Type number for process: 1 Add ...");
+                string process = Console.ReadLine();
+            bool processAdd = int.Parse(process) == 1;
+                if (processAdd)  // Trying out an if else statement, there are some issues but better than I had expected it to be.
+                    Add();             
+                else Console.WriteLine("Bad input");
+            Console.ReadLine();
+        
         }
-        private static void Add()
+        private static void Add() // Made this into a method to clean it up a bit.
         {
             Console.WriteLine("Enter a:");
             string input = Console.ReadLine();

@@ -10,6 +10,10 @@ namespace Exercise_2a
     {
         static void Main(string[] args)
         {
+            Add(); //Made this mess into a method. Its not good but I'm learning at least.
+        }
+        private static void Add()
+        {
             Console.WriteLine("Enter a:");
             string input = Console.ReadLine();
             int a = int.Parse(input);

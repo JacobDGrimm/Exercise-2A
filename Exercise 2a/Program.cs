@@ -121,7 +121,23 @@ namespace Exercise_2a
 
             double k = ((a + b + c + d + e + f + g + h + i + j) / 10);
             Console.WriteLine("The average score is " + k); // This is the average grade but it needs to be converted into a letter still.
-            
+
+            bool agrade = k >= 90.0; // I am sure there is an easier way to do all this...
+            bool bgrade = k >= 80.0 && k < 90.0;
+            bool cgrade = k >= 70.0 && k < 80.0;
+            bool dgrade = k >= 60.0 && k < 70.0;
+            bool fgrade = k < 60.0;
+
+            if (agrade)
+                Console.WriteLine("Which is an A.");
+            if (bgrade)
+                Console.WriteLine("Which is a B.");
+            if (cgrade)
+                Console.WriteLine("Which is a C.");
+            if (dgrade)
+                Console.WriteLine("Which is a D.");
+            if (fgrade)
+                Console.WriteLine("Which is an F.");
         }
     }
 }

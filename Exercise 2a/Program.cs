@@ -17,10 +17,15 @@ namespace Exercise_2a
             Console.WriteLine("Welcome to exercise 2A Calculating averages."); // Tried some interesting things with a menu system here.
             Console.WriteLine("Type number for process you want:");
             Console.WriteLine("1 Sum of ten numbers.");
-            string process = Console.ReadLine();
+            Console.WriteLine("2 Average grade of ten scores.");
+            string process; 
+            process = Console.ReadLine();
             bool processAdd = int.Parse(process) == 1;
+            bool processAverage = int.Parse(process) == 2;
             if (processAdd)  // Trying out an if else statement, there are some issues but better than I had expected it to be. Only will accept ints as input at this time...
                 Add();
+            if (processAverage)
+                Averages();
             else Console.WriteLine("Bad input");
             Looper(); // Fixed it to be a loop
         }

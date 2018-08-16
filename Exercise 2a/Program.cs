@@ -13,15 +13,13 @@ namespace Exercise_2a
             Looper();
         }
         private static void Looper()
-        {
-            Console.WriteLine("Welcome to exercise 2A Calculating averages."); // Tried some interesting things with a menu system here.
-            Console.WriteLine("Type number for process you want:");
-            Console.WriteLine("1 Sum of ten numbers.");
-            Console.WriteLine("2 Average grade of ten scores.");
+        { // Saved some space by using line breaks in the console write line
+            Console.WriteLine("Welcome to exercise 2A Calculating averages.\n Type number for the process you want:\n 1 Sum of ten numbers.\n 2 Average grade of ten scores.\n 3 Average grade from a specified number scores."); // Tried some interesting things with a menu system here.
             string process; 
             process = Console.ReadLine();
             bool processAdd = int.Parse(process) == 1;
             bool processAverage = int.Parse(process) == 2;
+            bool processAverageSpecific = int.Parse(process) == 3;
             if (processAdd)  // Trying out an if else statement, there are some issues but better than I had expected it to be. Only will accept ints as input at this time...
                 Add();
             if (processAverage)
@@ -121,7 +119,7 @@ namespace Exercise_2a
 
             double k = ((a + b + c + d + e + f + g + h + i + j) / 10);
             Console.WriteLine("The average score is " + k); // This is the average grade but it needs to be converted into a letter still.
-
+            
             bool agrade = k >= 90.0; // I am sure there is an easier way to do all this...
             bool bgrade = k >= 80.0 && k < 90.0;
             bool cgrade = k >= 70.0 && k < 80.0;
@@ -138,6 +136,17 @@ namespace Exercise_2a
                 Console.WriteLine("Which is a D.");
             if (fgrade)
                 Console.WriteLine("Which is an F.");
+
+            Console.ReadLine();
         }
+        private static void AverageSpecific()
+        {
+            Console.WriteLine("How many scores would you like to average?");
+            string input = Console.ReadLine();
+            int noOfTests = int.Parse(input);
+
+            double[] scores = new double[noOfTests];
+        }
+
     }
 }

@@ -12,6 +12,18 @@ namespace Exercise_2a
         {
             Looper();
         }
+        private static string NumberGetter()// Trying to figure out a better way to get the numbers for the equation...
+        {
+            string input;
+            Console.WriteLine("Enter #:");
+            input = Console.ReadLine();
+            bool isInValid = int.Parse(input) > 100;
+            if (isInValid)
+                Console.WriteLine("Invalid Number");
+            if (isInValid)
+                NumberGetter();
+            return input;
+        }
         private static void Looper()
         { // Saved some space by using line breaks in the console write line
             Console.WriteLine("Welcome to exercise 2A Calculating averages.\n Type number for the process you want:\n 1 Sum of ten numbers.\n 2 Average grade of ten scores.\n 3 Average grade from a specified number scores."); // Tried some interesting things with a menu system here.
@@ -24,50 +36,41 @@ namespace Exercise_2a
                 Add();
             if (processAverage)
                 Averages();
-            else Console.WriteLine("Bad input");
+            else Console.WriteLine("Try Again\n");
             Looper(); // Fixed it to be a loop
         }
+        
         private static void Add() // Made this into a method to clean it up a bit.
         {
             Console.WriteLine("Enter 10 numbers to add..");
-            Console.WriteLine("Enter The first number:");
-            string input = Console.ReadLine();
+            string input = NumberGetter();
             int a = int.Parse(input);
 
-            Console.WriteLine("Enter the second number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int b = int.Parse(input);
 
-            Console.WriteLine("Enter the third number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int c = int.Parse(input);
 
-            Console.WriteLine("Enter the fourth number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int d = int.Parse(input);
 
-            Console.WriteLine("Enter the fifth number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int e = int.Parse(input);
 
-            Console.WriteLine("Enter the sixth number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int f = int.Parse(input);
 
-            Console.WriteLine("Enter the seventh number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int h = int.Parse(input);
 
-            Console.WriteLine("Enter the eighth number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int g = int.Parse(input);
 
-            Console.WriteLine("Enter the ninth number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int i = int.Parse(input);
 
-            Console.WriteLine("Enter the tenth number:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             int j = int.Parse(input);
 
             int k = (a + b + c + d + e + f + g + h + i + j);
@@ -77,44 +80,34 @@ namespace Exercise_2a
         private static void Averages()
         {
             Console.WriteLine("Enter the ten numbers to average");
-            Console.WriteLine("Enter the first score:");
-            string input = Console.ReadLine();
+            string input = NumberGetter();
             double a = double.Parse(input);
 
-            Console.WriteLine("Enter the second score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double b = double.Parse(input);
 
-            Console.WriteLine("Enter the third score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double c = double.Parse(input);
 
-            Console.WriteLine("Enter the fourth score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double d = double.Parse(input);
 
-            Console.WriteLine("Enter the fifth score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double e = double.Parse(input);
 
-            Console.WriteLine("Enter the sixth score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double f = double.Parse(input);
 
-            Console.WriteLine("Enter the seventh score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double g = double.Parse(input);
 
-            Console.WriteLine("Enter the eighth score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double h = double.Parse(input);
 
-            Console.WriteLine("Enter the ninth score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double i = double.Parse(input);
 
-            Console.WriteLine("Enter the final score:");
-            input = Console.ReadLine();
+            input = NumberGetter();
             double j = double.Parse(input);
 
             double k = ((a + b + c + d + e + f + g + h + i + j) / 10);
@@ -147,6 +140,9 @@ namespace Exercise_2a
 
             double[] scores = new double[noOfTests];
         }
+
+
+        
 
     }
 }

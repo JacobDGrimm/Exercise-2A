@@ -10,25 +10,24 @@ namespace Exercise_2a
     {
         static void Main(string[] args)
         {
-            Looper();
+            Menu();
         }
         private static string NumberGetter()// Trying to figure out a better way to get the numbers for the equation...
         {
             string input;
-            Console.WriteLine("Enter #:");
+            Console.Write("Enter #:");
             input = Console.ReadLine();
-            bool isInValid = int.Parse(input) > 100;
+            bool isInValid = int.Parse(input) > 100 || int.Parse(input) < 0;
             if (isInValid)
-                Console.WriteLine("Invalid Number");
+                Console.WriteLine("Invalid Number\nTryAgain\n");
             if (isInValid)
                 NumberGetter();
             return input;
         }
-        private static void Looper()
+        private static void Menu()
         { // Saved some space by using line breaks in the console write line
-            Console.WriteLine("Welcome to exercise 2A Calculating averages.\n Type number for the process you want:\n 1 Sum of ten numbers.\n 2 Average grade of ten scores.\n 3 Average grade from a specified number scores."); // Tried some interesting things with a menu system here.
-            string process; 
-            process = Console.ReadLine();
+            Console.WriteLine("Welcome to exercise 2A Calculating averages.\n-------------------------------------------------\nType number for the process you want:\n 1 Sum of ten numbers.\n 2 Average grade of ten scores.\n 3 Average grade from a specified number scores."); // Tried some interesting things with a menu system here.
+            string process = Console.ReadLine();
             bool processAdd = int.Parse(process) == 1;
             bool processAverage = int.Parse(process) == 2;
             bool processAverageSpecific = int.Parse(process) == 3;
@@ -36,10 +35,11 @@ namespace Exercise_2a
                 Add();
             if (processAverage)
                 Averages();
+            if (processAverageSpecific)
+                AverageSpecific();
             else Console.WriteLine("Try Again\n");
-            Looper(); // Fixed it to be a loop
+            Menu(); // Fixed it to be a loop
         }
-        
         private static void Add() // Made this into a method to clean it up a bit.
         {
             Console.WriteLine("Enter 10 numbers to add..");
@@ -140,9 +140,5 @@ namespace Exercise_2a
 
             double[] scores = new double[noOfTests];
         }
-
-
-        
-
     }
 }

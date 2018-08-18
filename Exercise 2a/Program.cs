@@ -137,8 +137,36 @@ namespace Exercise_2a
             Console.WriteLine("How many scores would you like to average?");
             string input = Console.ReadLine();
             int noOfTests = int.Parse(input);
+            double[] number = new double[noOfTests];
+            int x = 0;
 
-            double[] scores = new double[noOfTests];
+            for (int counter = 0; counter < noOfTests; counter++)
+            {
+                string score = NumberGetter();
+                number[x] = double.Parse(score);
+                ++x;
+            }
+            double sum = number.Sum();
+            double average = (sum / noOfTests);
+            Console.WriteLine($"The average of the scores is: {average}");
+            bool agrade = average >= 90.0;
+            bool bgrade = average >= 80.0 && average < 90.0;
+            bool cgrade = average >= 70.0 && average < 80.0;
+            bool dgrade = average >= 60.0 && average < 70.0;
+            bool fgrade = average < 60.0;
+
+            if (agrade)
+                Console.WriteLine("Which is an A.");
+            if (bgrade)
+                Console.WriteLine("Which is a B.");
+            if (cgrade)
+                Console.WriteLine("Which is a C.");
+            if (dgrade)
+                Console.WriteLine("Which is a D.");
+            if (fgrade)
+                Console.WriteLine("Which is an F.");
+
+            Console.ReadLine();
         }
     }
 }

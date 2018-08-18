@@ -17,7 +17,10 @@ namespace Exercise_2a
             string input;
             Console.Write("Enter #:");
             input = Console.ReadLine();
-            bool isInValid = int.Parse(input) > 100 || int.Parse(input) < 0;
+            bool done = (input) == "done";
+            if (done)
+                return input;
+            bool isInValid = int.Parse(input) > 100 || int.Parse(input) < 0; //typing in non numbers breaks this 
             if (isInValid)
                 Console.WriteLine("Invalid Number\nTryAgain\n");
             if (isInValid)
@@ -26,23 +29,26 @@ namespace Exercise_2a
         }
         private static void Menu()
         { // Saved some space by using line breaks in the console write line
-            Console.WriteLine("Welcome to exercise 2A Calculating averages.\n-------------------------------------------------\nType number for the process you want:\n 1 Sum of ten numbers.\n 2 Average grade of ten scores.\n 3 Average grade from a specified number scores."); // Tried some interesting things with a menu system here.
+            Console.WriteLine("Welcome to exercise 2A Calculating averages.\n-------------------------------------------------\nType number for the process you want:\n 1 Sum of ten numbers.\n 2 Average grade of ten scores.\n 3 Average grade from a specified number scores.\n 4 Average grade from unspecified list."); // Tried some interesting things with a menu system here.
             string process = Console.ReadLine();
             bool processAdd = int.Parse(process) == 1;
             bool processAverage = int.Parse(process) == 2;
             bool processAverageSpecific = int.Parse(process) == 3;
+            bool processAverageUnspecific = int.Parse(process) == 4;
             if (processAdd)  // Trying out an if else statement, there are some issues but better than I had expected it to be. Only will accept ints as input at this time...
                 Add();
             if (processAverage)
                 Averages();
             if (processAverageSpecific)
                 AverageSpecific();
+            if (processAverageUnspecific)
+                AverageUnspecific();
             else Console.WriteLine("Try Again\n");
             Menu(); // Fixed it to be a loop
         }
         private static void Add() // Made this into a method to clean it up a bit.
         {
-            Console.WriteLine("Enter 10 numbers to add..");
+            Console.WriteLine("Enter 10 numbers to add. Please enter numbers only");
             string input = NumberGetter();
             int a = int.Parse(input);
 
@@ -134,7 +140,7 @@ namespace Exercise_2a
         }
         private static void AverageSpecific()
         {
-            Console.WriteLine("How many scores would you like to average?");
+            Console.WriteLine("How many scores would you like to average? Please enter number scores only");
             string input = Console.ReadLine();
             int noOfTests = int.Parse(input);
             double[] number = new double[noOfTests];
@@ -149,6 +155,43 @@ namespace Exercise_2a
             double sum = number.Sum();
             double average = (sum / noOfTests);
             Console.WriteLine($"The average of the scores is: {average}");
+            bool agrade = average >= 90.0;
+            bool bgrade = average >= 80.0 && average < 90.0;
+            bool cgrade = average >= 70.0 && average < 80.0;
+            bool dgrade = average >= 60.0 && average < 70.0;
+            bool fgrade = average < 60.0;
+
+            if (agrade)
+                Console.WriteLine("Which is an A.");
+            if (bgrade)
+                Console.WriteLine("Which is a B.");
+            if (cgrade)
+                Console.WriteLine("Which is a C.");
+            if (dgrade)
+                Console.WriteLine("Which is a D.");
+            if (fgrade)
+                Console.WriteLine("Which is an F.");
+
+            Console.ReadLine();
+        }
+        private static void AverageUnspecific()
+        {
+            Console.WriteLine("Enter your scores and type \"done\" when done");
+            List<double> number = new List<double>();
+            bool Done = false;
+            while (Done == false)
+            {
+                string score = NumberGetter();
+                Done = ("done" == score);
+                if (Done)
+                    break;
+                else
+                    number.Add(double.Parse(score));
+            }
+            double sum = number.Sum();
+            double average = sum / (number.Count);
+            Console.WriteLine($"The average is {average}");
+
             bool agrade = average >= 90.0;
             bool bgrade = average >= 80.0 && average < 90.0;
             bool cgrade = average >= 70.0 && average < 80.0;
